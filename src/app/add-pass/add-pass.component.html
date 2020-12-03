@@ -1,20 +1,23 @@
 <div class="container">
     <div class="row">
         <div class="col-md-6 offset-md-3">
-            <form>
+            <form [formGroup]="form">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Application</label>
-                    <input type="text" class="form-control" id="application" aria-describedby="app">
+                    <input type="text" class="form-control" id="application" aria-describedby="app" formControlName="application">
                     <small id="apptext" class="form-text text-muted">Just the name of an app with the username and password below.</small>
                 </div>
                 <div class="form-group">
-                  <label for="exampleInputEmail1">Email address</label>
-                  <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                  <label for="username">Email address</label>
+                  <input type="text" class="form-control" id="username" aria-describedby="emailHelp" formControlName="username">
                   <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                  <div *ngIf="form.get('username').touched && form.get('username').invalid" class="alert alert-danger">
+                    dfsdfs
+                  </div>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Password</label>
-                  <input type="password" class="form-control" id="exampleInputPassword1">
+                  <input type="password" class="form-control" id="Password" formControlName="password">
                 </div>
                 <button type="submit" class="btn btn-outline-primary">Submit</button>
               </form>
