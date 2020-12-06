@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-6 offset-md-3">
-      <form [formGroup]="form">
+      <form [formGroup]="form" #f="ngForm" (ngSubmit)="submit(f.value)">
           <div class="form-group">
               <label for="application">Application</label>
               <input type="text" 
@@ -44,7 +44,7 @@
           <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
             <small *ngIf="password.errors.required" class="form-text text-muted">Password is required</small>
           </div>
-        <button type="submit" class="btn btn-outline-primary">Submit</button>
+        <button type="submit" [disabled]="f.invalid" class="btn btn-outline-primary">Submit</button>
       </form>
     </div>
   </div>

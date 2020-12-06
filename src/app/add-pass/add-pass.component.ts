@@ -1,6 +1,9 @@
+import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { UsernameValidators } from './username.validator';
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl, Validators } from '@angular/forms';
+import {Validators, FormBuilder } from '@angular/forms';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-add-pass',
@@ -9,11 +12,10 @@ import {FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class AddPassComponent implements OnInit {
 
-  form = new FormGroup({
-    application: new FormControl('', [Validators.required]),
-    username: new FormControl('', [Validators.required, UsernameValidators.cannotContainSpace]),
-    password: new FormControl('', [Validators.required])
-  });
+  form;
+  records;
+  items: Observable<any[]>;
+  subscription: AngularFireList<any>;
 
   get username() {
     return this.form.get('username');
@@ -27,7 +29,29 @@ export class AddPassComponent implements OnInit {
     return this.form.get('password');
   }
 
-  constructor() { }
+  constructor(fb: FormBuilder, db: AngularFireDatabase) {
+    this.subscription = db.list('/PasswordBank');
+    this.items = this.subscription.valueChanges();
+    console.log(this.items);
+
+
+    this.form = fb.group({
+      application: ['', Validators.required],
+      username: ['', [Validators.required, UsernameValidators.cannotContainSpace]],
+      password: ['', Validators.required]
+    });
+
+
+   }
+   //TOD0: Hash the password, then asynchronously handle the successfull insertion.
+   submit(app) {
+     this.subscription.push({
+      Application: app.application,
+      username: app.username,
+      password: app.password
+     });
+     console.log(app);
+   }
 
   ngOnInit(): void {
   }
