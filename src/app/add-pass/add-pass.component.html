@@ -2,7 +2,15 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <form [formGroup]="form" #f="ngForm" (ngSubmit)="submit(f.value)">
-          <div class="form-group">
+        <mat-form-field>
+          <mat-label>Application</mat-label>
+          <input type="text" matInput placeholder="Ex. Pottermore" required formControlName="application">
+          <mat-error *ngIf="application.hasError('required')">
+            Please enter a valid application
+          </mat-error>
+        </mat-form-field>
+
+          <!-- <div class="form-group">
               <label for="application">Application</label>
               <input type="text" 
                       class="form-control" 
@@ -43,7 +51,7 @@
           </div>
           <div *ngIf="password.touched && password.invalid" class="alert alert-danger">
             <small *ngIf="password.errors.required" class="form-text text-muted">Password is required</small>
-          </div>
+          </div> -->
         <button type="submit" [disabled]="f.invalid" class="btn btn-outline-primary">Submit</button>
       </form>
     </div>

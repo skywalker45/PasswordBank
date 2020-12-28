@@ -11,6 +11,9 @@ import { GetPassComponent } from './get-pass/get-pass.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
+
+import { MatInputModule } from '@angular/material/input';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +27,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]
