@@ -1,1 +1,6 @@
 <p>get-pass works!</p>
+<ul>
+    <li *ngFor="let app of applications | async">
+      {{ app.Application }}
+    </li>
+  </ul>

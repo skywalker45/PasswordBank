@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "password-bank-c8a3b": {
+      "hosting": {
+        "PasswordBank": [
+          "password-bank-c8a3b"
+        ]
+      }
+    }
+  }
+}

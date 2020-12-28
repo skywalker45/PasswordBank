@@ -11,6 +11,8 @@ import { GetPassComponent } from './get-pass/get-pass.component';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
+import { AngularFirestoreModule } from 'angularfire2/firestore';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,9 +26,10 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
     FormsModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFirestoreModule
   ],
-  providers: [],
+  providers: [AngularFirestoreModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
