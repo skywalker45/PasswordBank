@@ -1,1 +1,18 @@
-<p>get-pass works!</p>
+<div class="container">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <ngb-accordion [closeOthers]="true" activeIds="static-1" *ngFor="let app of applications | async">
+          <ngb-panel id="static-1" title="{{app.Application}}">
+            <ng-template ngbPanelContent>
+              <p> {{ app.username }} </p>
+              <p> {{ app.password }} </p>
+            </ng-template>
+          </ngb-panel>
+        </ngb-accordion>
+        
+      </div>
+    </div>
+
+</div>
+
+

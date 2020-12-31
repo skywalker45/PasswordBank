@@ -1,3 +1,4 @@
+import { LoginComponent } from './login/login.component';
 import { AddPassComponent } from './add-pass/add-pass.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule, Component } from '@angular/core';
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'getPassword',
     component: GetPassComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   },
   {
     path: '**',

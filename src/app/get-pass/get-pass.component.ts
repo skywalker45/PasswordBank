@@ -1,4 +1,6 @@
+import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
+import { AngularFireDatabase } from '@angular/fire/database';
 
 @Component({
   selector: 'app-get-pass',
@@ -7,7 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GetPassComponent implements OnInit {
 
-  constructor() { }
+  applications: Observable<any[]>;
+
+  constructor(db: AngularFireDatabase) {
+    this.applications = db.list('PasswordBank').valueChanges();
+   }
 
   ngOnInit(): void {
   }
